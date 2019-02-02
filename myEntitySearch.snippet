@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>myEntityDelete</Title>
+      <Shortcut>myEntityDelete</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cSharp">
+        <![CDATA[
+            using (dbContext db = new dbContext())
+            {
+                var query = db.EmailAddress.Where(a => a.EmailAddress1.StartsWith(searchTb.Text));
+                this.bindingSource1.DataSource = query.ToList();
+            }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
