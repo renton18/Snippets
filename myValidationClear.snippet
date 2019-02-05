@@ -3,16 +3,18 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myEntitySearch</Title>
-      <Shortcut>myEntity</Shortcut>
+      <Title>Clear</Title>
+      <Shortcut>myValidation</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cSharp">
         <![CDATA[
-            using (dbContext db = new dbContext())
+            foreach (Control item in Controls)
             {
-                var query = db.EmailAddress.Where(a => a.EmailAddress1.StartsWith(searchTb.Text));
-                this.bindingSource1.DataSource = query.ToList();
+                if (item is TextBox)
+                {
+                    errorProvider.SetError(item, null);
+                }
             }
         ]]>
       </Code>

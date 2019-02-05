@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>myEntityModel</Title>
+      <Shortcut>myEntity</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cSharp">
+        <![CDATA[
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "必須")]
+        [DisplayName("アカウント名")]
+        [StringLength(100, ErrorMessage = "100文字以内")]
+        public string acountName { get; set; }
+
+        [Required(ErrorMessage = "必須")]
+        [DisplayName("メールアドレス")]
+        [EmailAddress(ErrorMessage = "不適切なメールアドレス")]
+        public string mailAddress { get; set; }
+
+        [Required(ErrorMessage = "必須")]
+        [DisplayName("パスワード")]
+        [StringLength(100, ErrorMessage = "100文字以内")]
+        public string password { get; set; }
+
+        [DisplayName("アカウントID")]
+        [StringLength(100, ErrorMessage = "100文字以内")]
+        public string accountId { get; set; }
+
+        [DisplayName("詳細")]
+        [StringLength(100, ErrorMessage = "100文字以内")]
+        public string detail { get; set; }
+
+        [DisplayName("作成日時")]
+        public DateTime dateTime { get; set; }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
