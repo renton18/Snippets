@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myEntitySearch</Title>
+      <Title>Search</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -11,7 +11,7 @@
         <![CDATA[
             using (dbContext db = new dbContext())
             {
-                var query = db.EmailAddress.Where(a => a.EmailAddress1.StartsWith(searchTb.Text));
+                var query = db.EmailAddress.Where(a => a.EmailAddress1.Contain(searchTb.Text));
                 this.bindingSource1.DataSource = query.ToList();
             }
         ]]>

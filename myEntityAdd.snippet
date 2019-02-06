@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Add</Title>
+      <Shortcut>myEntity</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cSharp">
+        <![CDATA[
+            int  updateCount = 0;
+            using (var db = new context())
+            {
+                try
+                {
+                        db.EmailAddress.Add(model);
+                        updateCount = db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    // 例外処理
+                    ex.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList()
+                        .ForEach(model => Console.WriteLine("{0} - {1}", model.PropertyName, model.ErrorMessage));
+                }
+            }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

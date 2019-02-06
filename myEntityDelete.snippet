@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myEntityDelete</Title>
+      <Title>Delete</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -20,7 +20,7 @@
             int currentRow = 0;
             //DataGridViewの場合
             //currentRow = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            string updateCount = "";
+            int updateCount = 0;
             using (var db = new Model1())
             {
                 try
@@ -29,8 +29,7 @@
                     if (item != null)
                     {
                         db.EmailAddress.Remove(item);
-                        updateCount = string.Format("{0}件削除", db.SaveChanges());
-                        Console.WriteLine("");
+                        updateCount = db.SaveChanges();
                     }
                 }
                 catch (DbEntityValidationException ex)
