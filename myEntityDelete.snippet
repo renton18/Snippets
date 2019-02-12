@@ -21,7 +21,7 @@
             //DataGridViewの場合
             //currentRow = (int)dataGridView1.CurrentRow.Cells[0].Value;
             int updateCount = 0;
-            using (var db = new Model1())
+            using (var db = new dbContext())
             {
                 try
                 {
@@ -35,8 +35,10 @@
                 catch (DbEntityValidationException ex)
                 {
                     // 例外処理
+                    var errorMessage = "";
                     ex.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList()
-                        .ForEach(item => Console.WriteLine("{0} - {1}", item.PropertyName, item.ErrorMessage));
+                        .ForEach(model => errorMessage = errorMessage + model.PropertyName + " - " + model.ErrorMessage);
+                    MessageBox.Show(errorMessage);
                 }
             }
             //DataGridViewの場合 表示上の削除

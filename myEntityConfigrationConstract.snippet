@@ -3,13 +3,15 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myDateTime</Title>
-      <Shortcut>myDateTime月末日付</Shortcut>
+      <Title>Constract</Title>
+      <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cSharp">
         <![CDATA[
-          DateTime.Now.AddMonths(1).AddDays(-1).ToString("yyyy/MM/dd (dddd) hh時mm分ss秒");
+            //データロスを伴う更新(列削除など）を許可       
+            //AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "NameList.Model.NameListDbContext";
         ]]>
       </Code>
     </Snippet>

@@ -9,10 +9,21 @@
     <Snippet>
       <Code Language="cSharp">
         <![CDATA[
-            using (dbContext db = new dbContext())
+            using (var db = new dbContext())
             {
-                var query = db.EmailAddress.Where(a => a.EmailAddress1.Contain(searchTb.Text));
-                this.bindingSource1.DataSource = query.ToList();
+                 try
+                {
+                    var query = db.EmailAddress.Where(a => a.EmailAddress1.Contains(searchTb.Text));
+                    this.bindingSource1.DataSource = query.ToList();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    // 例外処理
+                    var errorMessage = "";
+                    ex.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList()
+                        .ForEach(model => errorMessage = errorMessage + model.PropertyName + " - " + model.ErrorMessage);
+                    MessageBox.Show(errorMessage);
+                }
             }
         ]]>
       </Code>

@@ -14,14 +14,16 @@
             {
                 try
                 {
-                        db.EmailAddress.Add(model);
-                        updateCount = db.SaveChanges();
+                    db.EmailAddress.Add(model);
+                    updateCount = db.SaveChanges();
                 }
                 catch (DbEntityValidationException ex)
                 {
                     // 例外処理
+                    var errorMessage = "";
                     ex.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList()
-                        .ForEach(model => Console.WriteLine("{0} - {1}", model.PropertyName, model.ErrorMessage));
+                        .ForEach(model => errorMessage = errorMessage + model.PropertyName + " - " + model.ErrorMessage);
+                    MessageBox.Show(errorMessage);
                 }
             }
         ]]>
