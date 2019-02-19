@@ -12,18 +12,18 @@
         //①【参照設定】System.ComponentModel.DataAnnotations
         //②index使用する場合は「using System.ComponentModel.DataAnnotations.Schema;」を追加（「Ctrl + .」では追加されない)
         //③テーブル名の指定以下クラス名の上に追加　[Table("テーブル名")]
-        //④1つの列にindexユニークキーを設定したい場合は　[Index(IsUnique = true)]　を使用する
+        //④1つの列にユニークインデックス(一意にしたい）を設定したい場合は　[Index(IsUnique = true)]　を使用する
         
         [Key]
         public int Id { get; set; }
 
-        [Index("account", 1)]    // 複合インデックス
+        [Index("account", 1, IsUnique = true)]    // 複合ユニークインデックス
         [Required]  //NotNULL
         [StringLength(100)]
         [DisplayName("アカウントID")]
         public string accountId { get; set; }
         
-        [Index("account", 2)]    // 複合インデックス
+        [Index("account", 2, IsUnique = true)]    // 複合ユニークインデックス
         [DisplayName("作成日時")]
         public DateTime createdDatetime { get; set; }
         
