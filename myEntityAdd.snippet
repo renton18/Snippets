@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Add</Title>
+      <Title>ADD</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -14,6 +14,9 @@
             {
                 try
                 {
+                     //SQL出力
+                    db.Database.Log = (log) => System.Diagnostics.Debug.WriteLine(log);
+                    
                     db.EmailAddress.Add(model);
                     updateCount = db.SaveChanges();
                 }

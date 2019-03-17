@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Search</Title>
+      <Title>SELECTメソッド構文</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -12,9 +12,14 @@
             using (var db = new dbContext())
             {
                  try
-                {
+                {                    
+                    //SQL出力
+                    db.Database.Log = db.Database.Log = (log) => System.Diagnostics.Debug.WriteLine(log);
+                
                     var query = db.EmailAddress.Where(a => a.EmailAddress1.Contains(searchTb.Text));
+                    
                     this.bindingSource1.DataSource = query.ToList();
+                    this.dataGridView1.DataSource = bindingSource1;
                 }
                 catch (DbEntityValidationException ex)
                 {

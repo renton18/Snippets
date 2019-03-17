@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Update</Title>
+      <Title>UPDATE</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -21,6 +21,8 @@
                             
                             updateCount =  db.SaveChanges();
                         }
+                        //SQL出力
+                        db.Database.Log = (log) => System.Diagnostics.Debug.WriteLine(log);
                 }
                 catch (DbEntityValidationException ex)
                 {

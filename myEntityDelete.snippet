@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Delete</Title>
+      <Title>DELETE</Title>
       <Shortcut>myEntity</Shortcut>
     </Header>
     <Snippet>
@@ -25,6 +25,9 @@
             {
                 try
                 {
+                    //SQL出力
+                    db.Database.Log = (log) => System.Diagnostics.Debug.WriteLine(log);
+                    
                     var item = db.EmailAddress.SingleOrDefault(x => x.EmailAddressID == currentRow);
                     if (item != null)
                     {
