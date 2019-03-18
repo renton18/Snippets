@@ -3,13 +3,13 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myDateTime今月末日付</Title>
+      <Title>今月末日</Title>
       <Shortcut>myDateTime</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cSharp">
         <![CDATA[
-          DateTime.Now.AddMonths(1).AddDays(-1).ToString("yyyy/MM/dd (dddd) hh時mm分ss秒");
+          new DateTime(d.Year, d.AddMonths(1).Month, d.Day).AddMinutes(-1); 
         ]]>
       </Code>
     </Snippet>
