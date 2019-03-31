@@ -4,7 +4,7 @@
   <CodeSnippet Format="1.0.0">
     <Header>
       <Title>UPDATE</Title>
-      <Shortcut>myEntity</Shortcut>
+      <Shortcut>myEntityCRUD</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cSharp">
@@ -14,6 +14,9 @@
             {
                 try
                 {
+                         //SQL出力
+                        db.Database.Log = logger.Info;
+                
                         Customer r = db.Customers.Where(a => a.Id == model.Id).FirstOrDefault();
                         if (r != null)
                         {
@@ -21,15 +24,13 @@
                             
                             updateCount =  db.SaveChanges();
                         }
-                        //SQL出力
-                        db.Database.Log = (log) => System.Diagnostics.Debug.WriteLine(log);
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    // 例外処理
                     var errorMessage = "";
                     ex.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList()
                         .ForEach(model => errorMessage = errorMessage + model.PropertyName + " - " + model.ErrorMessage);
+                    logger.Error(errorMessage);
                     MessageBox.Show(errorMessage);
                 }
             }
