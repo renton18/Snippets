@@ -3,13 +3,12 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>myEntityMigrationTableへのSQL出力停止</Title>
-      <Shortcut>myEntity</Shortcut>
+      <Title>空白行区切り</Title>
+      <Shortcut>mySplit</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cSharp">
-        <![CDATA[//_migrationテーブルのログを出力不可
-            Database.SetInitializer<DataDbContext>(null);]]>
+        <![CDATA[Regex.Split(word, @"^\r\n", RegexOptions.Multiline);]]>
       </Code>
     </Snippet>
   </CodeSnippet>
